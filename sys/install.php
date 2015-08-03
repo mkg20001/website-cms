@@ -19,9 +19,11 @@ $mysql["server"]=$serv;
 $mysql["port"]=$port;
 $str=serialize($mysql);
 file_put_contents(CONFIG, $str);
-file_put_contents(HERE."tmp.sql", str_replace('{DATABASE}',$data,file_get_contents(HERE."sql".DS."install.sql")));
-mysqli_query($mysqli,"LOAD DATA LOCAL INFILE '".HERE."tmp.sql"."' INTO TABLE mytable");
-unlink(HERE."tmp.sql");
+$mystr=str_replace('{DATABASE}',$data,file_get_contents(HERE."sql".DS."install.sql"));
+$mystr=explode(";",$mystr);
+foreach($mystr as $query) {
+mysqli_query($mysqli,$query);
+}
 echo "OK";
 header("Location: http://".DOMAIN);
 }
