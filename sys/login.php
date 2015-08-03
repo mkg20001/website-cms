@@ -11,7 +11,7 @@ $row=domy("SELECT * FROM users WHERE username LIKE '$user'")[0];
 $sessions=unserialize($row[5]);
 $devices=serialize($row[6]);
 
-if ($devices[$device]=$token and $sessions[$token]=$_SERVER['HTTP_USER_AGENT']) {
+if (!is_null($devices[$device]) and $devices[$device]=$token and !is_null($sessions[$token]) and $sessions[$token]=$_SERVER['HTTP_USER_AGENT']) {
 echo "logged in";
 }
 }
