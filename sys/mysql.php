@@ -3,7 +3,6 @@
 
 $C=$GLOBALS["C"];
 
-//$MYCON=mysqli_connect(C["sql"]["server"],C["sql"]["username"],C["sql"]["password"]);
 $mysqli = new mysqli($C["sql"]["server"], $C["sql"]["username"], $C["sql"]["password"], $C["sql"]["database"], $C["sql"]["port"]);
 if ($mysqli->connect_error) {
 if ($_GET["against"]=="true" and URI=="install") {
@@ -14,6 +13,7 @@ header("Location: http://".DOMAIN."/install");
 } else {
 $GLOBALS["C"]["sql"]["i"]=$mysqli;
 }
+
 //Executes MySQL Queries
 function domy($input) {
 return mysqli_query($GLOBALS["C"]["sql"]["i"],$input);
