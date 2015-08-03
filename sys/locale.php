@@ -6,8 +6,10 @@ $lc=explode("
 $lang=array();
 
 foreach($lc as $l) {
+if ($l != "") {
 $lg=explode("=",$l);
 $lang[$lg[0]]=$lg[1];
+}
 }
 
 $GLOBALS["C"]["langdata"]=$lang;
