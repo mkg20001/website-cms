@@ -1,0 +1,10 @@
+must.install=Das CMS ist aktuell noch nicht eingerichtet, richten Sie es vor der Benutzung ein
+install.now=Jetzt Installieren
+install.welcome=Willkommen im Installations Setup
+install.mysql=Geben Sie die MySQL Zugangsdaten ein um das CMS einzurichten
+next.button=Weiter »
+word.server=Server
+word.port=Port
+word.username=Benutzername
+word.password=Passwort
+word.database=Datenbank

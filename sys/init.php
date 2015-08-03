@@ -4,6 +4,24 @@ define("DS","/");
 define("HERE",dirname(__FILE__).DS);
 define("ENDING",".php");
 define("Version","0.0.0-alpha");
+//define("C",array());
+$GLOBALS["C"]=array();
+$C=$GLOBALS["C"];
+
+//Justin, we´ve got a problem C["KEY"] is only avaible in PHP7
+//Using $GLOBALS["C"]["KEY"] instead
+
+$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+if (!file_exists(HERE."locale".DS.$lang.ENDING)) {
+$lang="en";
+}
+
+define("LANG",$lang);
+
+//For Config array again
+$C["version"]=VERSION;
+$C["locale"]=LANG;
+$C["lang"]=LANG;
 
 $uri=$_SERVER['PHP_SELF'];
 if ($uri[strlen($uri)-1] == "/") {
@@ -18,6 +36,9 @@ function inc($file) {
 include(HERE.$file.ENDING);
 }
 
+//TODO: Locale Load and Set Up
+inc("locale");
+
 //Configuration?
 if (file_exists(HERE."config/config".ENDING)) {
 $installed=true;
@@ -25,16 +46,16 @@ $installed=true;
 $installed=false;
 }
 define("INSTALLED",$installed);
+$C["installed"]=$installed;
+
+if (!$installed) {
+echo file_get_contents(HERE."install-header.html");
+}
 
 if ($installed) {
 
-//TODO: Add Config Loading Scripts
-
-//TODO: Add MySQL Connecting/Commands
-inc("myslq");
-
-//TODO: Add Easier HTML DOM Managment
-inc("dom-manage");
+//TODO: Real Init
+inc("boot");
 
 } else if (URI == "install") {
 inc("install");
