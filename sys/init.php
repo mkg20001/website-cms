@@ -3,7 +3,7 @@
 define("DS","/");
 define("HERE",dirname(__FILE__).DS);
 define("ENDING",".php");
-define("VERSION","0.0.0-alpha");
+define("VERSION","0.0.1-alpha");
 //define("C",array());
 $GLOBALS["C"]=array();
 $C=$GLOBALS["C"];
