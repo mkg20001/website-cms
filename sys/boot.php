@@ -7,7 +7,32 @@ $GLOBALS["C"]["sql"] = unserialize($configdata);
 inc("mysql");
 
 //TODO: Add Easier HTML DOM Managment
+
+$type="none";
+
+if (substr(URI,0,5) == "Admin") {
+$type="Admin";
+}
+
+define("PAGETYPE",$type);
+$GLOBALS["C"]["pagetype"]=$type;
+
 inc("dom-manage");
+
+switch ($type) {
+case "Admin":
+	$uri=substr(URI,4);
+	if ($uri=="") {
+	$uri="index.php";
+	}
+	if (file_exists(HERE."admin".DS.$uri)) {
+	inc("admin".DS.$uri);
+	} else {
+	inc("admin".DS."404");
+	}
+break;
+
+}
 
 
 //Show the Page

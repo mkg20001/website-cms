@@ -8,3 +8,4 @@ word.port=Port
 word.username=Username
 word.password=Password
 word.database=Database
+admin.welcome=Welcome to the Site Administration
