@@ -9,5 +9,6 @@ word.username=Benutzername
 word.password=Passwort
 word.database=Datenbank
 404=404 Nicht Gefunden!
+to.home=Zur Startseite
 admin.welcome=Willkommen auf der Seiten Administration
 admin.to.home=Zurück zur Seiten Administration

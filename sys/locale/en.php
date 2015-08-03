@@ -9,5 +9,6 @@ word.username=Username
 word.password=Password
 word.database=Database
 404=404 Not Found!
+to.home=To Homepage
 admin.welcome=Welcome to the Site Administration
 admin.to.home=Back to Site Administration Home Page

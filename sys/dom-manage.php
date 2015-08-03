@@ -11,11 +11,23 @@ function getDoc() {
 return $GLOBALS["C"]["doc"];
 }
 
-function getByTag($tag,$first=false) {
+function getByTag($tag,$first=true) {
 if ($first) {
 return getDoc()->getElementsByTagName($tag)->item(0);
-}
+} else {
 return getDoc()->getElementsByTagName($tag);
+}}
+
+function getBody() {
+return getByTag("body");
+}
+
+function getHead() {
+return getByTag("head");
+}
+
+function setTitle($title) {
+addHTML(getHead(),"title",$title,true);
 }
 
 function getByID($id,$first=false) {

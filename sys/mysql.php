@@ -16,7 +16,7 @@ $GLOBALS["C"]["sql"]["i"]=$mysqli;
 
 //Executes MySQL Queries
 function domy($input) {
-return mysqli_query($GLOBALS["C"]["sql"]["i"],$input);
+return $GLOBALS["C"]["sql"]["i"]->query($input,MYSQLI_USE_RESULT);
 }
 
 //TODO: Add better entry adding/removing/updating

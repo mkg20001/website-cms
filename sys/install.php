@@ -19,7 +19,8 @@ $mysql["server"]=$serv;
 $mysql["port"]=$port;
 $str=serialize($mysql);
 file_put_contents(CONFIG, $str);
-$mystr=str_replace('{DATABASE}',$data,file_get_contents(HERE."sql".DS."install.sql"));
+$pwq=base64_encode($pass);
+$mystr=str_replace(array('{DATABASE}','{rootpw}'),array($data,$pwq),file_get_contents(HERE."sql".DS."install.sql"));
 $mystr=explode(";",$mystr);
 foreach($mystr as $query) {
 mysqli_query($mysqli,$query);

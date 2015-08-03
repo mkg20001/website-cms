@@ -6,7 +6,10 @@ $GLOBALS["C"]["sql"] = unserialize($configdata);
 //MySQL Connecting/Commands
 inc("mysql");
 
-//TODO: Add Easier HTML DOM Managment
+//Login
+inc("login");
+
+//HTML DOM Managment
 
 $type="none";
 
@@ -30,6 +33,11 @@ case "Admin":
 	} else {
 	inc("admin".DS."404");
 	}
+break;
+
+case "none":
+	setTitle(L("404",true));
+	inc("404");
 break;
 
 }
