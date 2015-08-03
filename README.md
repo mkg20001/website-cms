@@ -21,7 +21,13 @@ There are many things to do before the beta release:
   - H1,H2,H3
   - P
   - IMG
+  - TABLE
   - ...
+
+# Live Demo
+[Go to Live Demo](http://cms.mkg20001.sytes.net/)
+
+**IMPORTANT:** The Code on this page is the Code I´m actually editing and that means it could cause a 500 server error
 
 # Need Contributors
 Because I am alone I need some people which help me
