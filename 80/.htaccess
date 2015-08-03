@@ -13,6 +13,6 @@ Options -indexes
 </IfModule>
 
 <IfModule !mod_rewrite.c>
-	ErrorDocument 404 "ERROR"
+	ErrorDocument 404 "ERROR: Require mod_rewrite"
 </IfModule>
 
