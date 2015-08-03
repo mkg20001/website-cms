@@ -6,6 +6,13 @@ $GLOBALS["C"]["sql"] = unserialize($configdata);
 //MySQL Connecting/Commands
 inc("mysql");
 
+//Device ID Setup
+if (!isset($_COOKIE["LAUTHPEOPLE"])) {
+$pla=base64_encode(uniqid().uniqid().uniqid());
+setCookie("LAUTHPEOPLE",$pla,time()+31536000,"/");
+header("Location: ".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
+}
+
 //Login
 inc("login");
 
@@ -13,8 +20,13 @@ inc("login");
 
 $type="none";
 
-if (substr(URI,0,5) == "Admin") {
-$type="Admin";
+switch (explode("/",URI)[0]) {
+case "Admin":
+	$type="Admin";
+break;
+case "Login":
+	$type="Login";
+break;
 }
 
 define("PAGETYPE",$type);
@@ -24,7 +36,7 @@ inc("dom-manage");
 
 switch ($type) {
 case "Admin":
-	$uri=substr(URI,4);
+	explode("/",$uri)[1];
 	if ($uri=="") {
 	$uri="index.php";
 	}
@@ -33,6 +45,10 @@ case "Admin":
 	} else {
 	inc("admin".DS."404");
 	}
+break;
+
+case "Login":
+	inc("pages".DS."login");
 break;
 
 case "none":

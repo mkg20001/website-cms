@@ -16,11 +16,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   `time` varchar(100) NOT NULL,
   `perm` varchar(10) NOT NULL,
-  `sessions` varchar(200) NOT NULL,
-  `devices` varchar(200) NOT NULL
+  `sessions` varchar(2000) NOT NULL,
+  `devices` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Users and Sessions';
 ALTER TABLE `settings`
   ADD UNIQUE KEY `name` (`name`);
 ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
-INSERT INTO `websiteCMS`.`users` (`username`, `realname`, `email`, `time`, `perm`, `sessions`, `devices`) VALUES ('root', 'Administration', 'root@localhost', '{rootpw}', 'root', '', '')
+INSERT INTO `websiteCMS`.`users` (`username`, `realname`, `email`, `time`, `perm`, `sessions`, `devices`) VALUES ('root', 'Administration', 'root@localhost', '{rootpw}', 'root', '', '');

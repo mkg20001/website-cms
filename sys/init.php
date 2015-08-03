@@ -1,9 +1,9 @@
 <?php
-//TODO: Add Definitions
+//Definitions
 define("DS","/");
 define("HERE",dirname(__FILE__).DS);
 define("ENDING",".php");
-define("VERSION","0.0.1-alpha");
+define("VERSION","0.0.2-alpha");
 //define("C",array());
 $GLOBALS["C"]=array();
 $C=$GLOBALS["C"];
@@ -38,7 +38,7 @@ function inc($file) {
 include(HERE.$file.ENDING);
 }
 
-//TODO: Locale Load and Set Up
+//Locale Load and Set Up
 inc("locale");
 
 //Configuration?
@@ -56,7 +56,7 @@ echo file_get_contents(HERE."install-header.html");
 
 if ($installed) {
 
-//TODO: Real Init
+//Real Init
 inc("boot");
 
 } else if (URI == "install") {
