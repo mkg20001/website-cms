@@ -18,12 +18,14 @@ $lang="en";
 
 define("LANG",$lang);
 
+define("CONFIG",substr(HERE,0,-4)."conf.config");
+
 //For Config array again
 $C["version"]=VERSION;
 $C["locale"]=LANG;
 $C["lang"]=LANG;
 
-$uri=$_SERVER['PHP_SELF'];
+$uri=explode("?",$_SERVER['PHP_SELF'])[0];
 if ($uri[strlen($uri)-1] == "/") {
 $uri=substr($uri,0,-1);
 }
@@ -40,7 +42,7 @@ include(HERE.$file.ENDING);
 inc("locale");
 
 //Configuration?
-if (file_exists(HERE."config/config".ENDING)) {
+if (file_exists(CONFIG)) {
 $installed=true;
 } else {
 $installed=false;

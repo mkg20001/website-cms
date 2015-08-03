@@ -1,5 +1,33 @@
 <?php
-if (!INSTALLED) {
+if (!INSTALLED and isset($_POST["username"])) {
+$user=$_POST["username"];
+$pass=$_POST["password"];
+$serv=$_POST["server"];
+$port=$_POST["port"];
+$data=$_POST["database"];
+
+$mysqli = new mysqli($serv, $user, $pass, "", $port);
+if ($mysqli->connect_error) {
+    die("ERROR Setup MySQL");
+} else {
+//Let´s Setup
+$mysql=array();
+$mysql["username"]=$user;
+$mysql["password"]=$pass;
+$mysql["database"]=$data;
+$mysql["server"]=$serv;
+$mysql["port"]=$port;
+$str=serialize($mysql);
+file_put_contents(CONFIG, $str);
+file_put_contents(HERE."tmp.sql", str_replace('{DATABASE}',$data,file_get_contents(HERE."sql".DS."install.sql")));
+mysqli_query($mysqli,"LOAD DATA LOCAL INFILE '".HERE."tmp.sql"."' INTO TABLE mytable");
+unlink(HERE."tmp.sql");
+echo "OK";
+header("Location: http://".DOMAIN);
+}
+
+
+} else if (!INSTALLED) {
 
 //TODO: Add installation Setup
 $step=$_COOKIE["step"];
