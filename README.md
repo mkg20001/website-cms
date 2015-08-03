@@ -9,7 +9,7 @@ This CMS will have the following features:
 
 # ToDo
 There are many things to do before the beta release:
-- Create Setup
+- ✔ Create Setup
 - Create Administration Pages
 - Create Page Editinng
 - Create Log-In and so on
