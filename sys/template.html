@@ -8,4 +8,61 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container">
+<nav class="navbar navbar-top navbar-default" role="navigation">
+      <!--<p class="navbar-text hidden-xs ng-binding">Minecraft Launcher v2.0</p>!-->
+  <ul class="nav nav-tabs" id="nav">
+<li class="urlactive active"><a data-toggle="tab" href="#home"><img src=""/>iGoogle</a></li>
+<li class="urlactive "><a data-toggle="tab" href="#login"><img src=""/>Login</a></li>
+<li class="urlactive "><a data-toggle="tab" href="#reg"><img src=""/>Registrieren</a></li>
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">About</a></li>
+</ul>
+  </nav>
+
+  <div class="tab-content">
+<div id="home" class="tab-pane fade in active">    <div class="jumbotron">
+      <h3>iGoogle</h3>
+      <p>Anmelden um diesen Dienst zu nutzen</p>
+    </div>
+</div>
+<div id="login" class="tab-pane fade "><div class="container">
+  <h2>Anmelden</h2>
+  <form method="POST" role="form">
+    <div class="form-group">
+      <label for="email">Benutzername/E-Mail:</label>
+      <input name="a-name" type="text" class="form-control" id="email" placeholder="Benutzername/E-Mail">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Passwort:</label>
+      <input name="a-pw" type="password" class="form-control" id="pwd" placeholder="Passwort">
+    </div>
+<button class="btn btn-primary">Anmelden</button>
+  </form>
+</div>
+</div><div id="reg" class="tab-pane fade "><div class="container">
+  <h2>Registrieren</h2>
+  <form method="POST" role="form">
+    <div class="form-group">
+      <label for="name">Benutzername:</label>
+      <input name="a-name" type="text" class="form-control" id="name" placeholder="Benutzername">
+    </div>
+    <div class="form-group">
+      <label for="email">E-Mail:</label>
+      <input name="a-mail" type="email" class="form-control" id="email" placeholder="E-Mail">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Passwort:</label>
+      <input name="a-pw" type="password" class="form-control" id="pwd" placeholder="Passwort">
+    </div>
+<input type="text" style="display:none;" name="reg" value="true">
+<button class="btn btn-primary">Registrieren</button>
+  </form>
+</div>
+</div>  </div>
+</div>
+
+
 </body></html>

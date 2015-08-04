@@ -26,8 +26,16 @@ function getHead() {
 return getByTag("head");
 }
 
-function setTitle($title) {
-addHTML(getHead(),"title",$title,true);
+function getMain() {
+return getById("main");
+}
+
+function getNav() {
+return getById("nav");
+}
+
+function setAtr($where,$what,$value) {
+$where->setAttributeNode(new DOMAttr($what, $value));
 }
 
 function getByID($id,$first=false) {
@@ -55,6 +63,13 @@ $node=cText($node,$value);
 $node=cHTML($what,$value);
 }
 $where->appendChild($node);
+return $node;
 }
+
+function putHTML($where,$node) {
+$where->appendChild($node);
+}
+
+inc("dom-function");
 
 ?>
