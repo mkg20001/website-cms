@@ -6,16 +6,24 @@ class PluginBase {
    public $version;
    public $website;
    public $depends=array();
+   public $pluginBaseType;
+   
+   public $elementInfo;
    
    private $pluginBaseDir;
    private $pluginDir;
    private $pluginInfo=array();
    
-   function __construct($dir) {
+   private $id;
+   
+   function __construct($dir,$id) {
        $this->$pluginBaseDir=str_replace("/data/","",$dir);
        $this->$pluginDir=str_replace(str_replace("sys/","",HERE),"",$this->$pluginBaseDir);
-       getPluginInfo(getFile("plugin.info"));
-       //Construct
+       $this->$pluginInfo=getPluginInfo(getFile("plugin.info"));
+       $info=$this->$pluginInfo;
+       $this->$elementInfo=array($info["type"],$info["arg"]);
+       $this->$pluginBaseType=explode("/",$this->$pluginBaseDir)[1];
+       $this->$id=$id;
    }
 
    function __destruct() {

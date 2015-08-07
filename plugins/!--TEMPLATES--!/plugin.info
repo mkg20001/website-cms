@@ -4,3 +4,12 @@ Author: Plugin Author
 Website: http://plugin.website.com
 Description: About This Plugin
 Dependencies: plugin (=0.0.1), plugin.2 (<0.0.2)
+type: html
+arg: -
+#Remove the Comments!
+#type=html or page or extend or unique
+#html=Website Element
+#page=Own Page for ex. a Blog
+#extend=Extending a Plugin for example (change "extends" to plugin name)
+#unique=Additional Functions or something like this
+#arg=arguments

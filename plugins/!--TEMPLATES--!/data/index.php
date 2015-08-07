@@ -1,19 +1,13 @@
 <?php
 class plugin.name extends PluginBase {
-   function __construct() {
-       parent::__construct(dirname(__FILE__));
+   function __construct($id) {
+       parent::__construct(dirname(__FILE__),$id);
        //Construct
    }
 
    function __destruct() {
        parent::__destruct();
        //Destruct
-   }
-   
-   function elementInfo() {
-     $type=//html or extend or unique
-     $arg=//array contains for ex. : 
-     return array($type);
    }
 }
 ?>
