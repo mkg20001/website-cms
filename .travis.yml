@@ -1,5 +1,7 @@
 language: php
 
+sudo: false
+
 php:
   - 5.4
   - 5.5
@@ -19,7 +21,7 @@ before_install:
   
 install:
   # install php packages required for running a web server from drush on php 5.3
-  - sudo apt-get install -y --force-yes php5-cgi php5-mysqli php5 apache2
+  - sudo apt-get install -y --force-yes php5-cgi php5-mysql php5 apache2
 
 before_script:
   - cd ../..
