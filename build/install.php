@@ -6,7 +6,7 @@ $port="3306";
 $data="websiteCMS";
 
 define("DS","/");
-define("HERE",dirname(__FILE__).DS);
+define("HERE",str_replace("build/","sys/",dirname(__FILE__)).DS);
 define("ENDING",".php");
 define("VERSION","0.0.2-alpha");
 define("CONFIG",substr(HERE,0,-4)."conf.config");
