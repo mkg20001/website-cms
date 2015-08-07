@@ -50,18 +50,17 @@ $installed=false;
 define("INSTALLED",$installed);
 $C["installed"]=$installed;
 
-if (!$installed) {
-echo file_get_contents(HERE."install-header.html");
-}
-
 if ($installed) {
 
 //Real Init
+define("LOCALEMODE",true);
 inc("boot");
 
-} else if (URI == "install") {
-inc("install");
 } else {
-inc("must-install");
+
+//install init
+define("LOCALEMODE",false);
+inc("install".DS."index");
+
 }
 ?>
