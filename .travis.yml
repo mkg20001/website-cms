@@ -24,7 +24,6 @@ install:
   - sudo apt-get install -y --force-yes php5-cgi php5-mysql php5 apache2
 
 before_script:
-  - cd ../..
   - /home/travis/.phpenv/versions/5.6/bin/composer self-update
   - dir
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
