@@ -25,4 +25,5 @@ foreach($mystr as $query) {
 mysqli_query($mysqli,$query);
 }
 echo "OK";
+}
 ?>
