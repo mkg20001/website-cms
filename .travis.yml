@@ -13,7 +13,7 @@ php:
 mysql:
   database: websiteCMS
   username: root
-  password: test
+#  password: test
   encoding: utf8
   
 before_install:
@@ -29,4 +29,6 @@ before_script:
   - mysql -e 'create database websiteCMS'
   - php build/install.php
 
-script: phpunit ./80/index.php
+script:
+  - cd ./80/
+  - phpunit index.php
