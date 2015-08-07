@@ -24,10 +24,9 @@ install:
   - sudo apt-get install -y --force-yes php5-cgi php5-mysql php5 apache2
 
 before_script:
-  - /home/travis/.phpenv/versions/5.6/bin/composer self-update
-  - dir
-  # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
+#  - /home/travis/.phpenv/versions/5.6/bin/composer self-update
+#  - dir
   - mysql -e 'create database websiteCMS'
   - php build/install.php
 
-#script: drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080
+script: phpunit ./80/index.php

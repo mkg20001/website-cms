@@ -1,6 +1,6 @@
 <?php
 $user="root";
-$pass="test";
+$pass="";
 $serv="localhost";
 $port="3306";
 $data="websiteCMS";
