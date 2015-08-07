@@ -6,6 +6,9 @@ $GLOBALS["C"]["sql"] = unserialize($configdata);
 //MySQL Connecting/Commands
 inc("mysql");
 
+//Plugins and so on
+inc("plugins".DS."index");
+
 //Device ID Setup
 if (!isset($_COOKIE["LAUTHPEOPLE"])) {
 $pla=base64_encode(uniqid().uniqid().uniqid());
