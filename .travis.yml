@@ -1,7 +1,31 @@
 language: php
+
 php:
   - 5.4
   - 5.5
   - 5.6
   - hhvm
   - nightly
+  - 7
+  
+mysql:
+  database: websiteCMS
+  username: root
+  password: test
+  encoding: utf8
+  
+before_install:
+  - sudo apt-get update > /dev/null
+  
+install:
+  # install php packages required for running a web server from drush on php 5.3
+  - sudo apt-get install -y --force-yes php5-cgi php5-mysqli php5 apache2
+
+before_script:
+  - cd ../..
+
+  # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
+  - mysql -e 'create database websiteCMS'
+  - php build/install.php
+
+#script: drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080
