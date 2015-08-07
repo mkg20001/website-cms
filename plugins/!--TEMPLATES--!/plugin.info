@@ -1,0 +1,6 @@
+Name: Plugin Name
+ID: plugin.name
+Author: Plugin Author
+Website: http://plugin.website.com
+Description: About This Plugin
+Dependencies: plugin (=0.0.1), plugin.2 (<0.0.2)
