@@ -1,0 +1,8 @@
+Name: Alpha
+ID: alpha
+Author: Maciej Krüger
+Website: https://github.com/mkg20001/website-cms/tree/master/plugins/alpha/
+Description: The Base for Base Plugins
+Dependencies: 
+type: unique
+arg: -

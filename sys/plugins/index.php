@@ -3,6 +3,8 @@
 
 define("PLUGINDIR",str_replace("sys/","plugins/",HERE));
 
+inc("plugins".DS."base");
+
 $plugins=array();
 $pluginClass=array();
 $pluginBaseClass=array();
@@ -15,9 +17,18 @@ $dir=PLUGINDIR.$ddir.DS.$pdir.DS;
 if (is_dir($dir) and file_exists($dir."plugin.info") and (file_exists($dir."enabled") or $ddir == "base")) {
 $name=$pdir;
 $plugins[$name]=$dir;
-include($dir."data".DS."base".ENDING);
-$pluginBaseClass[$name]=$pdir;
-$pluginClass[$name]=new $pdir("first");
+require_once($dir."data".DS."index".ENDING);
+     $text=file_get_contents($dir."plugin.info");
+     $ar=explode("
+",$text);
+     $data=array();
+     foreach ($ar as $line) {
+     $a=explode(": ",$line);
+     $data[$a[0]]=$a[1];
+     }
+$pclass=$data["ID"];
+$pluginBaseClass[$name]=$pclass;
+$pluginClass[$name]=new $pclass("first");
 }
 }
 }

@@ -1,0 +1,8 @@
+Name: Dom
+ID: dom
+Author: Maciej Krüger
+Website: https://github.com/mkg20001/website-cms/tree/master/plugins/alpha-dom/
+Description: The Base DOM
+Dependencies: alpha
+type: unique
+arg: -

@@ -17,13 +17,13 @@ class PluginBase {
    private $id;
    
    function __construct($dir,$id) {
-       $this->$pluginBaseDir=str_replace("/data/","",$dir);
-       $this->$pluginDir=str_replace(str_replace("sys/","",HERE),"",$this->$pluginBaseDir);
-       $this->$pluginInfo=getPluginInfo(getFile("plugin.info"));
-       $info=$this->$pluginInfo;
-       $this->$elementInfo=array($info["type"],$info["arg"]);
-       $this->$pluginBaseType=explode("/",$this->$pluginBaseDir)[1];
-       $this->$id=$id;
+       $this->pluginBaseDir=str_replace("/data/","",$dir);
+       $this->pluginDir=str_replace(str_replace("sys/","",HERE),"",$this->pluginBaseDir);
+       $this->pluginInfo=$this->getPluginInfo($this->getFile("plugin.info"));
+       $info=$this->pluginInfo;
+       $this->elementInfo=array($info["type"],$info["arg"]);
+       $this->pluginBaseType=explode("/",$this->pluginBaseDir)[1];
+       $this->id=$id;
    }
 
    function __destruct() {
@@ -31,7 +31,7 @@ class PluginBase {
    }
    
    function getFile($file) {
-       return $this->$pluginBaseDir.$file;
+       return $this->pluginBaseDir.$file;
    }
    
    
