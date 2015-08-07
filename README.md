@@ -1,5 +1,6 @@
 # website-cms
 A small Website-CMS
+[![Build Status](https://travis-ci.org/mkg20001/website-cms.svg?branch=master)](https://travis-ci.org/mkg20001/website-cms)
 # Features
 This CMS will have the following features:
 - Create Pages
