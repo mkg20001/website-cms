@@ -25,7 +25,8 @@ install:
 
 before_script:
   - cd ../..
-
+  - /home/travis/.phpenv/versions/5.6/bin/composer self-update
+  - dir
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database websiteCMS'
   - php build/install.php
