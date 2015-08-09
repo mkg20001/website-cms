@@ -8,6 +8,10 @@ define("VERSION","0.0.2-alpha");
 $GLOBALS["C"]=array();
 $C=$GLOBALS["C"];
 
+if (isset($_GET["500"])) {
+ini_set('display_errors', 1); error_reporting(~0);
+}
+
 //Justin, we´ve got a problem C["KEY"] is only avaible in PHP7
 //Using $GLOBALS["C"]["KEY"] instead
 

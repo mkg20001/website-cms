@@ -1,0 +1,127 @@
+<?php
+//alpha plugin for connecting with page elements while using PluginBase parents
+
+class dom extends DOMElement {
+   public $name;
+   public $author;
+   public $version;
+   public $website;
+   public $depends=array();
+   public $pluginBaseType;
+   
+   public $elementInfo;
+   
+   private $pluginBaseDir;
+   private $pluginDir;
+   private $pluginInfo=array();
+   
+   private $id;
+   
+   
+   public $doc;
+   
+   function __construct($id) {
+       $dir=dirname(__FILE__);
+       $this->pluginBaseDir=str_replace("/data/","",$dir);
+       $this->pluginDir=str_replace(str_replace("sys/","",HERE),"",$this->pluginBaseDir);
+       $this->pluginInfo=$this->getPluginInfo($this->getFile("plugin.info"));
+       $info=$this->pluginInfo;
+       $this->elementInfo=array($info["type"],$info["arg"]);
+       $this->pluginBaseType=explode("/",$this->pluginBaseDir)[1];
+       $this->id=$id;
+       
+       $this->dir=parent::__construct("1.0");
+       $doc->loadHTMLFile(HERE."template.html");
+       
+   }
+   
+   function getFile($file) {
+       return $this->pluginBaseDir.$file;
+   }
+   
+   
+   function getPluginInfo($file) {
+     $text=file_get_contents($file);
+     $ar=explode("
+",$text);
+     $data=array();
+     foreach ($ar as $line) {
+     $a=explode(": ",$line);
+     $data[$a[0]]=$a[1];
+     }
+     return $data;
+   }
+
+//GET Base
+
+function getByTag($tag,$first=true) {
+if ($first) {
+return $this->doc->getElementsByTagName($tag)->item(0);
+} else {
+return $this->doc->getElementsByTagName($tag);
+}}
+
+function getByID($id,$first=false) {
+if ($first) {
+return $this->doc->getElementById($id)->item(0);
+}
+return $this->doc->getElementById($id);
+}
+
+//Elements (shortcuts)
+
+function getBody() {
+return getByTag("body");
+}
+
+function getHead() {
+return getByTag("head");
+}
+
+function getMain() {
+return getById("main");
+}
+
+function getNav() {
+return getById("nav");
+}
+
+function setAtr($where,$what,$value) {
+$where->setAttributeNode(new DOMAttr($what, $value));
+}
+
+//Creating & Stuff
+
+function cHTML($what,$value="") {
+return $this->doc->createElement($what,$value);
+}
+
+function cText($node,$value) {
+$node2=$this->doc->createTextNode($value);
+$node->appendChild($node2);
+return $node;
+}
+
+function addHTML($where,$what,$value="",$text=false) {
+if ($text) {
+$node=cHTML($what);
+$node=cText($node,$value);
+} else {
+$node=cHTML($what,$value);
+}
+$where->appendChild($node);
+return $node;
+}
+
+function putHTML($where,$node) {
+$where->appendChild($node);
+}
+
+   function __destruct() {
+       parent::__destruct();
+       //Destruct
+   }
+   
+   
+}
+?>

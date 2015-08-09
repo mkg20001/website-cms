@@ -1,5 +1,5 @@
 <?php
-class dom extends alpha {
+class template extends PluginBase {
    function __construct($id) {
        parent::__construct(dirname(__FILE__),$id);
        //Construct

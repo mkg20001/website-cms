@@ -1,0 +1,8 @@
+Name: Template System
+ID: template
+Author: Maciej Krüger
+Website: https://github.com/mkg20001/website-cms/tree/master/plugins/alpha-any-template/
+Description: The Template System
+Dependencies: 
+type: unique
+arg: -

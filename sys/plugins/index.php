@@ -23,8 +23,10 @@ require_once($dir."data".DS."index".ENDING);
 ",$text);
      $data=array();
      foreach ($ar as $line) {
+     if ($line != "") {
      $a=explode(": ",$line);
      $data[$a[0]]=$a[1];
+     }
      }
 $pclass=$data["ID"];
 $pluginBaseClass[$name]=$pclass;
@@ -34,4 +36,6 @@ $pluginClass[$name]=new $pclass("first");
 }
 }
 }
+
+$GLOBALS["C"]["doc"]=$pluginClass["alpha-page"];
 ?>

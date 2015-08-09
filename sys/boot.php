@@ -6,7 +6,8 @@ $GLOBALS["C"]["sql"] = unserialize($configdata);
 //MySQL Connecting/Commands
 inc("mysql");
 
-//Plugins and so on
+//Plugins, Template and so on
+inc("templates".DS."index");
 inc("plugins".DS."index");
 
 //Device ID Setup

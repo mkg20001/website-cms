@@ -1,0 +1,9 @@
+Name: Template Name
+ID: template.name
+Author: Template Author
+Website: http://Template.website.com
+Description: About This Template
+Type: type
+#Remove the Comments!
+#type=The Template type for PHP Stuff, for e.x. bootstrap
+#(will be combined with Template own Types)

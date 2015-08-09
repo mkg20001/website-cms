@@ -1,43 +1,41 @@
 <?php
-class PluginBase {
+class TemplateBase {
    
    public $name;
    public $author;
    public $version;
    public $website;
-   public $depends=array();
-   public $pluginBaseType;
+   public $type;
+   public $templateBaseType;
    
-   public $elementInfo;
-   
-   private $pluginBaseDir;
-   private $pluginDir;
-   private $pluginInfo=array();
+   private $templateBaseDir;
+   private $templateDir;
+   private $templateInfo=array();
    
    private $id;
    
    function __construct($dir,$id) {
-       $this->pluginBaseDir=str_replace("/data/","",$dir.DS.DS);
-       $this->pluginDir=str_replace(str_replace("sys/","",HERE),"",$this->pluginBaseDir);
-       $this->pluginInfo=$this->getPluginInfo($this->getFile("plugin.info"));
-       $info=$this->pluginInfo;
+       $this->templateBaseDir=str_replace("/data/","",$dir.DS.DS);
+       $this->templateDir=str_replace(str_replace("sys/","",HERE),"",$this->templateBaseDir);
+       $this->templateInfo=$this->getTemplateInfo($this->getFile("template.info"));
+       $info=$this->templateInfo;
        
        $this->name=$info["Name"];
        $this->author=$info["Author"];
        /*$this->version=$info["Version"];*/
        $this->website=$info["Website"];
+       $this->type=$info["Type"];
        
-       $this->elementInfo=array($info["type"],$info["arg"]);
-       $this->pluginBaseType=explode("/",$this->pluginBaseDir)[1];
+       $this->templateBaseType=explode("/",$this->templateBaseDir)[1];
        $this->id=$id;
    }
    
    function getFile($file) {
-       return $this->pluginBaseDir.$file;
+       return $this->templateBaseDir.$file;
    }
    
    
-   function getPluginInfo($file) {
+   function getTemplateInfo($file) {
      $text=file_get_contents($file);
      $ar=explode("
 ",$text);
@@ -50,6 +48,8 @@ class PluginBase {
      }
      return $data;
    }
+   
+   
    
    function __destruct() {
        //Destruct

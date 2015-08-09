@@ -1,75 +1,15 @@
 <?php
-//First Using old Table Code
-inc("dom-table");
-
-//Init doc with Standart Template
-$GLOBALS["C"]["doc"]=new DOMDocument('1.0');
-$doc = $GLOBALS["C"]["doc"];
-$doc->loadHTMLFile(HERE."template.html");
-
 function getDoc() {
 return $GLOBALS["C"]["doc"];
 }
 
-function getByTag($tag,$first=true) {
-if ($first) {
-return getDoc()->getElementsByTagName($tag)->item(0);
-} else {
-return getDoc()->getElementsByTagName($tag);
-}}
-
-function getBody() {
-return getByTag("body");
-}
-
-function getHead() {
-return getByTag("head");
-}
-
-function getMain() {
-return getById("main");
-}
-
-function getNav() {
-return getById("nav");
-}
-
 function setAtr($where,$what,$value) {
-$where->setAttributeNode(new DOMAttr($what, $value));
-}
-
-function getByID($id,$first=false) {
-if ($first) {
-return getDoc()->getElementById($id)->item(0);
-}
-return getDoc()->getElementById($id);
-}
-
-function cHTML($what,$value="") {
-return getDoc()->createElement($what,$value);
-}
-
-function cText($node,$value) {
-$node2=getDoc()->createTextNode($value);
-$node->appendChild($node2);
-return $node;
+getDoc()->setAtr($where,$what,$value);
 }
 
 function addHTML($where,$what,$value="",$text=false) {
-if ($text) {
-$node=cHTML($what);
-$node=cText($node,$value);
-} else {
-$node=cHTML($what,$value);
-}
-$where->appendChild($node);
-return $node;
-}
-
-function putHTML($where,$node) {
-$where->appendChild($node);
+return getDoc()->addHTML($where,$what,$value,$text);
 }
 
 inc("dom-function");
-
 ?>
