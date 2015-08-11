@@ -1,23 +1,8 @@
 <?php
 //Load all the Plugins
 
-define("PLUGINDIR",str_replace("sys/","plugins/",HERE));
-
-inc("plugins".DS."base");
-
-$plugins=array();
-$pluginClass=array();
-$pluginBaseClass=array();
-
-foreach(scandir(PLUGINDIR) as $ddir) {
-if ($ddir != "." and $ddir != ".." and $ddir != "!--TEMPLATES--!") {
-foreach(scandir(PLUGINDIR.$ddir) as $pdir) {
-if ($pdir != "." and $pdir != "..") {
+function pluginInfo($pdir,$ddir) {
 $dir=PLUGINDIR.$ddir.DS.$pdir.DS;
-if (is_dir($dir) and file_exists($dir."plugin.info") and (file_exists($dir."enabled") or $ddir == "base")) {
-$name=$pdir;
-$plugins[$name]=$dir;
-require_once($dir."data".DS."index".ENDING);
      $text=file_get_contents($dir."plugin.info");
      $ar=explode("
 ",$text);
@@ -28,14 +13,62 @@ require_once($dir."data".DS."index".ENDING);
      $data[$a[0]]=$a[1];
      }
      }
-$pclass=$data["ID"];
-$pluginBaseClass[$name]=$pclass;
-$pluginClass[$name]=new $pclass("first");
+return $data;
 }
+
+function getPlugin($pdir,$ddir) {
+$dir=PLUGINDIR.$ddir.DS.$pdir.DS;
+if (is_dir($dir) and file_exists($dir."plugin.info") and pluginEnabled($pdir,$ddir)) {
+$name=$pdir;
+
+$data=pluginInfo($pdir,$ddir);
+
+$GLOBALS["plugins"][$name]=$dir;
+require_once($dir."data".DS."index".ENDING);
+
+$pclass=$data["ID"];
+$GLOBALS["pluginBaseClass"][$name]=$pclass;
+$GLOBALS["pluginClass"][$name]=new $pclass("first");
+}
+}
+
+function pluginEnabled($pdir,$ddir) {
+$dir=PLUGINDIR.$ddir.DS.$pdir.DS;
+if (file_exists($dir."enabled") or $ddir == "base") {
+return true;
+} else {
+return false;
+}
+}
+
+function loadPlugin($name) {
+foreach(scandir(PLUGINDIR) as $ddir) {
+if ($ddir != "." and $ddir != ".." and $ddir != "!--TEMPLATES--!") {
+foreach(scandir(PLUGINDIR.$ddir) as $pdir) {
+if ($pdir == $name) {
+getPlugin($pdir,$ddir);
+}
+}}}
+}
+
+define("PLUGINDIR",str_replace("sys/","plugins/",HERE));
+
+inc("plugins".DS."base");
+
+$GLOBALS["plugins"]=array();
+$GLOBALS["pluginClass"]=array();
+$GLOBALS["pluginBaseClass"]=array();
+
+foreach(scandir(PLUGINDIR) as $ddir) {
+if ($ddir != "." and $ddir != ".." and $ddir != "!--TEMPLATES--!") {
+foreach(scandir(PLUGINDIR.$ddir) as $pdir) {
+if ($pdir != "." and $pdir != ".." and pluginEnabled($pdir,$ddir)) {
+$dir=PLUGINDIR.$ddir.DS.$pdir.DS;
+loadPlugin($pdir);
 }
 }
 }
 }
 
-$GLOBALS["C"]["doc"]=$pluginClass["alpha-page"];
+$GLOBALS["C"]["doc"]=$GLOBALS["pluginClass"]["alpha-page"];
 ?>

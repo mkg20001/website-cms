@@ -9,7 +9,12 @@ if ($_GET["against"]=="true" and URI=="install") {
 unlink(CONFIG);
 header("Location: http://".DOMAIN."/install");
 }
-    die("ERROR Accessing MySQL database  <a href=\"http://".DOMAIN."/install?against=true\">Reconfigure</a>");
+    if ($C["sql"]["password"] != "") {
+    $ispw="Yes";
+    } else {
+    $ispw="No";
+    }
+    die("<b>ERROR</b> Accessing MySQL database ".$C["sql"]["username"]."@".$C["sql"]["server"].":".$C["sql"]["port"]."/".$C["sql"]["database"]." (Using Password: ".$ispw.")  <a href=\"http://".DOMAIN."/install?against=true\">Reset Config & Reconfigure</a>");
 } else {
 $GLOBALS["C"]["sql"]["i"]=$mysqli;
 }

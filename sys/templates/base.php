@@ -1,5 +1,5 @@
 <?php
-class TemplateBase {
+abstract class TemplateBase {
    
    public $name;
    public $author;
@@ -13,6 +13,9 @@ class TemplateBase {
    private $templateInfo=array();
    
    private $id;
+   
+   abstract function getElements();
+   
    
    function __construct($dir,$id) {
        $this->templateBaseDir=str_replace("/data/","",$dir.DS.DS);
@@ -28,6 +31,10 @@ class TemplateBase {
        
        $this->templateBaseType=explode("/",$this->templateBaseDir)[1];
        $this->id=$id;
+   }
+   
+   function __construct2($dir,$id,$isnav=false,$istab=false) {
+       
    }
    
    function getFile($file) {
