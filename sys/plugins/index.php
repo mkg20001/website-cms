@@ -28,7 +28,15 @@ require_once($dir."data".DS."index".ENDING);
 
 $pclass=$data["ID"];
 $GLOBALS["pluginBaseClass"][$name]=$pclass;
-$GLOBALS["pluginClass"][$name]=new $pclass("first");
+if ($data["arg"] == "HTML") {
+/*$doc=new DOMDocument("1.0");
+$div=$doc->createElement("div");
+$pc=new $pclass($div);*/
+$pc="";
+} else {
+$pc=new $pclass("first");
+}
+$GLOBALS["pluginClass"][$name]=$pc;
 }
 }
 

@@ -13,6 +13,7 @@ class dom extends DOMPlugin {
        $this->doc=new DOMDocument('1.0');
        $this->doc->loadHTMLFile(HERE."template.html");
        parent::saveDoc($this->doc);
+       $GLOBALS["doc"]=$this->doc;
    }
    
    function __construct2($template,$isnav=false,$istab=false) {
@@ -21,7 +22,7 @@ class dom extends DOMPlugin {
        $this->doc=new DOMDocument('1.0');
        $this->template=new template($this->doc,$template,$isnav,$istab);
        parent::saveDoc($this->doc);
-       
+       $GLOBALS["doc"]=$this->doc;
    }
    
 public function saveHTML() {

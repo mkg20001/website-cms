@@ -5,4 +5,4 @@ Website: https://github.com/mkg20001/website-cms/tree/master/plugins/element-for
 Description: The Form Element
 Dependencies: 
 type: unique
-arg: -
+arg: HTML

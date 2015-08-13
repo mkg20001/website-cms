@@ -3,6 +3,7 @@ class HTMLElement extends DOMPlugin {
    
    function __construct($dir,$id) {
        parent::__construct($dir,$id);
+       parent::saveDoc($GLOBALS["doc"]);
        $info=parent::getPluginInfo(parent::getFile("plugin.info"));
        if ($id=="first") {
        //TODO: Add this Thing to a selection menu
