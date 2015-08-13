@@ -13,6 +13,7 @@ $devices=serialize($row[6]);
 
 if (!is_null($devices[$device]) and $devices[$device]=$token and !is_null($sessions[$token]) and $sessions[$token]=$_SERVER['HTTP_USER_AGENT']) {
 $GLOBALS["login"]=true;
+$GLOBALS["user"]=array(name => $user,perm => "");
 }
 }
 

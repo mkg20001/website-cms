@@ -19,6 +19,20 @@ header("Location: http://".DOMAIN."/install");
 $GLOBALS["C"]["sql"]["i"]=$mysqli;
 }
 
+function runSQL($file,$in=array(),$out=array()) {
+$stdin=array('{DATABASE}','{DOMAIN}');
+$stdout=array($GLOBALS["C"]["sql"]["database"],DOMAIN);
+
+$input=array_merge($stdin,$in);
+$output=array_merge($stdout,$in);
+
+$mystr=str_replace($input,$output,file_get_contents(HERE."sql".DS.$file.".sql"));
+$mystr=explode(";",$mystr);
+foreach($mystr as $query) {
+mysqli_query($mysqli,$query);
+}
+}
+
 //Executes MySQL Queries
 function domy($query) {
 $link=$GLOBALS["C"]["sql"]["i"];

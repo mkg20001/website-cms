@@ -20,13 +20,15 @@ $mysql["port"]=$port;
 $str=serialize($mysql);
 file_put_contents(CONFIG, $str);
 $pwq=base64_encode($pass);
-$mystr=str_replace(array('{DATABASE}','{rootpw}'),array($data,$pwq),file_get_contents(HERE."sql".DS."install.sql"));
+$mystr=str_replace(array('{DATABASE}','{rootpw}','{DOMAIN}'),array($data,$pwq,DOMAIN),file_get_contents(HERE."sql".DS."install.sql"));
 $mystr=explode(";",$mystr);
 foreach($mystr as $query) {
 mysqli_query($mysqli,$query);
 }
+//Do this in Finish
+//runSQL("domain",array("{TITLE}","{WEBMASTER}","{GROUP}","{TEMPLATE}","{MASTER}","{EXDOMAIN}"),array("A Fresh Website-CMS","root","master","alpha-bootstrap","1","127.0.0.1"));
 echo "OK";
-header("Location: http://".DOMAIN);
+header("Location: http://".DOMAIN."/Finish");
 }
 
 
