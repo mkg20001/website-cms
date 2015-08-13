@@ -1,5 +1,5 @@
 <?php
-$login=false;
+$GLOBALS["login"]=false;
 if (isset($_COOKIE["LWHOAMI"]) and isset($_COOKIE["LAUTHDATABASE"])) {
 $token=$_COOKIE["LAUTHDATABASE"];
 $token=base64_decode($token);
@@ -12,7 +12,7 @@ $sessions=unserialize($row[5]);
 $devices=serialize($row[6]);
 
 if (!is_null($devices[$device]) and $devices[$device]=$token and !is_null($sessions[$token]) and $sessions[$token]=$_SERVER['HTTP_USER_AGENT']) {
-echo "logged in";
+$GLOBALS["login"]=true;
 }
 }
 
