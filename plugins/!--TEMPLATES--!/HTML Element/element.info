@@ -1,0 +1,6 @@
+Title: TitleOfThis
+Logo: sc.png
+Categorie: PluginCategorie
+Options: array()
+#Remove the Comments
+#Options=Possible options (will be added as argument to new $pclass() if not empty) 
