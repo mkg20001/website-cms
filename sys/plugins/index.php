@@ -54,10 +54,13 @@ getPlugin($pdir,$ddir);
 define("PLUGINDIR",str_replace("sys/","plugins/",HERE));
 
 inc("plugins".DS."base");
+inc("plugins".DS."dom");
+inc("plugins".DS."html");
 
 $GLOBALS["plugins"]=array();
 $GLOBALS["pluginClass"]=array();
 $GLOBALS["pluginBaseClass"]=array();
+$GLOBALS["htmlElements"]=array();
 
 foreach(scandir(PLUGINDIR) as $ddir) {
 if ($ddir != "." and $ddir != ".." and $ddir != "!--TEMPLATES--!") {

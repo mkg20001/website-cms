@@ -1,0 +1,8 @@
+Name: Page Editor
+ID: page0edit
+Author: Maciej Krüger
+Website: https://github.com/mkg20001/website-cms/tree/master/plugins/alpha-editor/
+Description: The Page Editor
+Dependencies: 
+type: unique
+arg: -

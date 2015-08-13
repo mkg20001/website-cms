@@ -1,0 +1,8 @@
+Name: Page Editor
+ID: htmlform
+Author: Maciej Krüger
+Website: https://github.com/mkg20001/website-cms/tree/master/plugins/element-form/
+Description: The Form Element
+Dependencies: 
+type: unique
+arg: -
