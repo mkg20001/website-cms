@@ -1,4 +1,6 @@
 # website-cms
+
+[![Join the chat at https://gitter.im/mkg20001/website-cms](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mkg20001/website-cms?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A small Website-CMS
 [![Build Status](https://travis-ci.org/mkg20001/website-cms.svg?branch=master)](https://travis-ci.org/mkg20001/website-cms)
 # Features
