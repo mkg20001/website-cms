@@ -5,6 +5,7 @@ $GLOBALS["C"]["sql"] = unserialize($configdata);
 
 //MySQL Connecting/Commands
 inc("mysql");
+inc("ip");
 
 //Plugins, Template and so on
 inc("templates".DS."index");
@@ -14,7 +15,10 @@ inc("plugins".DS."index");
 if (!isset($_COOKIE["LAUTHPEOPLE"])) {
 $pla=base64_encode(uniqid().uniqid().uniqid());
 setCookie("LAUTHPEOPLE",$pla,time()+31536000,"/");
-header("Location: ".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
+if (ip_info("Visitor", "Location")["continent_code"] == "EU") {
+setCookie("EU","1",time()+31536000,"/");
+}
+header("Location: ".'http://'.DOMAIN.DS.URI);
 }
 
 //Login
@@ -62,6 +66,13 @@ break;
 
 }
 
+//If EU add the Cookie Info
+if (isset($_COOKIE["EU"])) {
+new EUCookieInfo($GLOBALS["C"]["doc"]->getByTag("body"));
+if (isset($_GET["RMEU"])) {
+setCookie("EU","",0);
+}
+}
 
 //Show the Page
 echo $GLOBALS["C"]["doc"]->saveHTML();

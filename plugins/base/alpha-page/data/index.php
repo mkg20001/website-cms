@@ -18,7 +18,6 @@ class dom extends DOMPlugin {
    
    function __construct2($template,$isnav=false,$istab=false) {
        parent::__construct(dirname(__FILE__),"1");
-       
        $this->doc=new DOMDocument('1.0');
        $this->template=new template($this->doc,$template,$isnav,$istab);
        parent::saveDoc($this->doc);

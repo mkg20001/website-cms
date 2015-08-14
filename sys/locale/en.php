@@ -9,6 +9,7 @@ word.username=Username
 word.password=Password
 word.database=Database
 word.login=Login
+word.ok=OK
 404=404 Not Found!
 to.home=To Homepage
 admin.welcome=Welcome to the Site Administration

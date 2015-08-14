@@ -1,0 +1,8 @@
+Name: EUCookieInfo
+ID: EUCookieInfo
+Author: Maciej Krüger
+Website: http://plugin.website.com
+Description: EUCookieInfo
+Dependencies: plugin (=0.0.1), plugin.2 (<0.0.2)
+type: html
+arg: HTML

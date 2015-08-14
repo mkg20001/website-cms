@@ -1,5 +1,5 @@
 <?php
-class htmlform extends HTMLElement {
+class pluginName extends HTMLElement {
    
    private $me;
    
@@ -10,7 +10,6 @@ class htmlform extends HTMLElement {
    function __construct($where,$args=array()) {
        parent::__construct(dirname(__FILE__),uniqid());
        $this->me=parent::addHTML($where,"TYPE");
-       htmlform::setMethod();
        //Construct
    }
    

@@ -36,6 +36,8 @@ $sessions=serialize($sessions);
 setCookie("LWHOAMI",base64_encode($user),time()+2592000,"/");
 setCookie("LAUTHDATABASE",base64_encode($token),time()+2592000,"/");
 domy("UPDATE `websiteCMS`.`users` SET `sessions` = '$sessions', `devices` = '$devices' WHERE `users`.`username` = '$user'");
+return true;
 }
+return false;
 }
 ?>

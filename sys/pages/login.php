@@ -1,7 +1,9 @@
 <?php
 if (!$GLOBALS["login"]) {
 if (isset($_POST["username"]) and isset($_POST["password"])) {
-loginUser($_POST["username"],$_POST["password"]);
+if (loginUser($_POST["username"],$_POST["password"])) {
+header("Location: ../Login");
+}
 }
 
 $tab=addTab(L("word.login"),"login");
