@@ -63,6 +63,7 @@ define("PLUGINDIR",str_replace("sys/","plugins/",HERE));
 
 inc("plugins".DS."base");
 inc("plugins".DS."dom");
+inc("plugins".DS."page");
 inc("plugins".DS."html");
 
 $GLOBALS["plugins"]=array();

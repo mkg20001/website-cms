@@ -7,6 +7,9 @@ $GLOBALS["C"]["sql"] = unserialize($configdata);
 inc("mysql");
 inc("ip");
 
+$GLOBALS["Pages"]=array();
+$GLOBALS["PageClass"]=array();
+
 //Plugins, Template and so on
 inc("templates".DS."index");
 inc("plugins".DS."index");
@@ -60,11 +63,21 @@ case "Login":
 break;
 
 case "none":
+$w=false;
+foreach ($GLOBALS["Pages"] as $page) {
+if (explode("/",URI)[0]==$page) {
+new $GLOBALS["PageClass"][$page]("internal");
+$w=true;
+}
+}
+if (!$w) {
 	setTitle(L("404",true));
 	inc("404");
+}
 break;
 
 }
+
 
 //If EU add the Cookie Info
 if (isset($_COOKIE["EU"])) {
