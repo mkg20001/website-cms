@@ -4,7 +4,7 @@ class PageBase extends DOMPlugin {
    function __construct($dir,$id,$page,$class) {
        parent::__construct($dir,$id);
        parent::saveDoc($GLOBALS["doc"]);
-       $info=parent::getPluginInfo(parent::getFile("plugin.info"));
+       //$info=parent::getPluginInfo(parent::getFile("plugin.info"));
        
        if ($id=="first") {
        $GLOBALS["Pages"][]=$page;

@@ -66,8 +66,9 @@ case "none":
 $w=false;
 foreach ($GLOBALS["Pages"] as $page) {
 if (explode("/",URI)[0]==$page) {
-new $GLOBALS["PageClass"][$page]("internal");
+$pages=new $GLOBALS["PageClass"][$page]("internal");
 $w=true;
+$pages->runme(str_replace(array("$page/","$page"),"",URI));
 }
 }
 if (!$w) {
