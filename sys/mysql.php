@@ -22,11 +22,18 @@ $GLOBALS["C"]["sql"]["i"]=$mysqli;
 function runSQL($file,$in=array(),$out=array()) {
 $stdin=array('{DATABASE}','{DOMAIN}');
 $stdout=array($GLOBALS["C"]["sql"]["database"],DOMAIN);
+$mysqli=$GLOBALS["C"]["sql"]["i"];
+
+if (file_exists($file.".sql")) {
+$inq=file_get_contents($file.".sql");
+} else {
+$inq=file_get_contents(HERE."sql".DS.$file.".sql");
+}
 
 $input=array_merge($stdin,$in);
 $output=array_merge($stdout,$in);
 
-$mystr=str_replace($input,$output,file_get_contents(HERE."sql".DS.$file.".sql"));
+$mystr=str_replace($input,$output,$inq);
 $mystr=explode(";",$mystr);
 foreach($mystr as $query) {
 mysqli_query($mysqli,$query);

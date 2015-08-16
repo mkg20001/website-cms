@@ -51,6 +51,7 @@ class htmlform extends HTMLElement {
    setAtr($in,"id",$id);
    setAtr($in,"class","form-control");
    setAtr($div,"class","form-group");
+   return $div;
    }
 
    function __destruct() {

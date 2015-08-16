@@ -16,6 +16,6 @@ return getDoc()->addTab($title,$id,$value,$file);
 }
 
 function infoBox($where,$title,$text) {
-getDoc()->infoBox($where,$title,$text);
+return getDoc()->infoBox($where,$title,$text);
 }
 ?>

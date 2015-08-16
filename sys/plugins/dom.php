@@ -142,6 +142,7 @@ $box=$this->addHTML($where,"div");
 $this->setAtr($box,"class","jumbotron");
 $this->addHTML($box,"h2",$title,true);
 $this->addHTML($box,"p",$text,true);
+return $box;
 }
 
    function __destruct() {
