@@ -1,5 +1,8 @@
 # website-cms
 
+# This Project is discontinued
+## If you want to maintain it mail me (mkg20001@gmail.com)
+
 [![Join the chat at https://gitter.im/mkg20001/website-cms](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mkg20001/website-cms?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A small Website-CMS
 [![Build Status](https://travis-ci.org/mkg20001/website-cms.svg?branch=master)](https://travis-ci.org/mkg20001/website-cms)
@@ -26,11 +29,3 @@ There are many things to do before the beta release:
   - IMG
   - TABLE
   - ...
-
-# Live Demo
-[Go to Live Demo](http://cms.mkg20001.sytes.net/)
-
-**IMPORTANT:** The Code on this page is the Code I´m actually editing and that means it could cause a 500 server error
-
-# Need Contributors
-Because I am alone I need some people which help me
